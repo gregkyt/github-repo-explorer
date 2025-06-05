@@ -12,6 +12,7 @@ const nextConfig = {
     NEXT_PUBLIC_GITHUB_CLIENT_ID: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
     NEXT_PUBLIC_GITHUB_CLIENT_SECRET:
       process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
+    NEXT_PUBLIC_GITHUB_STATE: process.env.NEXT_PUBLIC_GITHUB_STATE,
   },
   reactStrictMode: false,
 };
