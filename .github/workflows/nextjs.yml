@@ -79,6 +79,7 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: |
+          rm -rf .env
           echo "NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL" >> .env
           echo "NEXT_PUBLIC_SERVICE_BASE_URL=$NEXT_PUBLIC_SERVICE_BASE_URL" >> .env
           echo "NEXT_PUBLIC_GITHUB_CLIENT_ID=$NEXT_PUBLIC_GITHUB_CLIENT_ID" >> .env
