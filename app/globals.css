@@ -1,8 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: light --default;
+}
 
-:root {
+@config '../tailwind.config.ts';
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -24,4 +27,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+}*/
