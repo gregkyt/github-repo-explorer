@@ -15,6 +15,8 @@ const GitHub = () => {
   const token = searchParams.get("token");
 
   useEffect(() => {
+    console.log(clientId);
+    console.log(state);
     if (token) onSuccessLogin(token);
   }, [token]);
 
