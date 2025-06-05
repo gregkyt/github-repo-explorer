@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+_Minimum node version 18_
+
+This project developed using Nextjs Framework, to run this project please follow this step
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+nvm use
+--
+pnpm install
+--
+pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3004](http://localhost:3004) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## .env.local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Please add this code into `env.local` to run this on localhost
 
-## Learn More
+```bash
+BASE_URL="http://localhost:3004"
+SERVICE_BASE_URL="https://api.github.com"
 
-To learn more about Next.js, take a look at the following resources:
+GITHUB_CLIENT_ID="Iv23li6Wz4y50TTywt5K"
+GITHUB_CLIENT_SECRET="b997909e172973d9b86a7450779436e023d225af"
+GITHUB_STATE="qwerty*123"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Unit Test
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To run all unit test
 
-## Deploy on Vercel
+```bash
+pnpm run test
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run specific file to run unit test
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm run test <rootDir>/__tests__/store/user-store.test.ts
+```
