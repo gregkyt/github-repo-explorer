@@ -1,0 +1,125 @@
+openapi: 3.0.3
+info:
+  title: VINARDS Open API
+  description: VINARDS Service
+  version: v1
+servers:
+  - url: https://api.github.com
+paths:
+  /search/users:
+    get:
+      tags:
+        - UserService
+      summary: Get Users
+      description: Get Users
+      operationId: UserService_GetUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/searchUsersResponse"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+  /users/${username}/repos:
+    get:
+      tags:
+        - UserService
+      summary: Get Users Repos
+      description: Get Users Repos
+      operationId: UserService_GetUsersRepos
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/userReposResponse"
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/v1ErrorResponse"
+components:
+  schemas:
+    v1ErrorResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+    userData:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        login:
+          type: string
+        node_id:
+          type: string
+        url:
+          type: string
+        type:
+          type: string
+        repos:
+          type: array
+          items:
+            $ref: "#/components/schemas/userRepoData"
+          default: []
+        repos_fetch_status:
+          type: integer
+          format: int32
+          default: 0
+        is_collapse:
+          type: boolean
+          default: false
+        avatar_url:
+          type: string
+        repos_url:
+          type: string
+    searchUsersResponse:
+      type: object
+      properties:
+        total_count:
+          type: integer
+          format: int32
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/userData"
+    userRepoData:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        node_id:
+          type: string
+        description:
+          type: string
+        stargazers_count:
+          type: integer
+          format: int32
+        url:
+          type: string
+        ssh_url:
+          type: string
+        git_url:
+          type: string
+        html_url:
+          type: string
+    userReposResponse:
+      type: array
+      items:
+        $ref: "#/components/schemas/userRepoData"
