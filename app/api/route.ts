@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -21,12 +20,8 @@ export async function GET(req: NextRequest) {
 
     const data = await res.json();
     const accessToken = data.access_token;
-
-    const cookieStore = cookies();
-    cookieStore.set("token", accessToken);
-
-    return NextResponse.redirect(`${baseUrl}/dashboard?token=${accessToken}`);
+    return NextResponse.redirect(`${baseUrl}?token=${accessToken}`);
   } catch {
-    return NextResponse.redirect(`${baseUrl}/dashboard?token=`);
+    return NextResponse.redirect(`${baseUrl}?token=`);
   }
 }
