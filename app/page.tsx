@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 
-export default function Home() {
+const GitHub = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const clientId = process.env.GITHUB_CLIENT_ID;
@@ -30,14 +30,22 @@ export default function Home() {
   }
 
   return (
+    <button
+      className={`flex btn ${isLoading ? "loading loading-dots" : ""}`}
+      onClick={goToGitHubLogin}
+    >
+      <label>Login with GitHub</label>
+      <FaGithub />
+    </button>
+  );
+};
+
+export default function Home() {
+  return (
     <div className="flex justify-center items-center h-screen">
-      <button
-        className={`flex btn ${isLoading ? "loading loading-dots" : ""}`}
-        onClick={goToGitHubLogin}
-      >
-        <label>Login with GitHub</label>
-        <FaGithub />
-      </button>
+      <Suspense fallback={<div>Loading...</div>}>
+        <GitHub />
+      </Suspense>
     </div>
   );
 }

@@ -1,19 +1,19 @@
 "use client";
 
 import { createUserStore } from "@/store/user-store";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-interface SearchProps {
-  accessToken?: string | null;
-}
-
-export default function Search(props: SearchProps) {
+export default function Search() {
   const { getSearchUsers } = createUserStore();
   const [search, setSearch] = useState<string>("");
 
+  const searchParams = useSearchParams();
+  const token = searchParams.get("token");
+
   useEffect(() => {
-    if (props.accessToken) {
-      localStorage.setItem("token", props.accessToken);
+    if (token) {
+      localStorage.setItem("token", token);
     }
   }, []);
 

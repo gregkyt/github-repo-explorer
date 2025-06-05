@@ -1,16 +1,15 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import List from "./components/list";
 import Search from "./components/search";
 
 export default function Dashboard() {
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
-
   return (
     <div className="p-4">
-      <Search accessToken={token} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Search />
+      </Suspense>
       <List />
     </div>
   );
