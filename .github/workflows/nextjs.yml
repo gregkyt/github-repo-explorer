@@ -86,7 +86,7 @@ jobs:
           NEXT_PUBLIC_GITHUB_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_GITHUB_CLIENT_SECRET }}
           NEXT_PUBLIC_GITHUB_STATE: ${{ secrets.NEXT_PUBLIC_GITHUB_STATE }}
       - name: Debug env file
-        run: cat .env
+        run: cat .env .env.production
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
