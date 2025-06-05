@@ -78,7 +78,13 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
-        run: ${{ steps.detect-package-manager.outputs.runner }} run build
+        run: |
+          echo "NEXT_PUBLIC_BASE_URL=${{ vars.NEXT_PUBLIC_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_SERVICE_BASE_URL=${{ vars.NEXT_PUBLIC_SERVICE_BASE_URL }}" >> .env
+          echo "NEXT_PUBLIC_GITHUB_CLIENT_ID=${{ vars.NEXT_PUBLIC_GITHUB_CLIENT_ID }}" >> .env
+          echo "NEXT_PUBLIC_GITHUB_CLIENT_SECRET=${{ vars.NEXT_PUBLIC_GITHUB_CLIENT_SECRET }}" >> .env
+          echo "NEXT_PUBLIC_GITHUB_STATE=${{ vars.NEXT_PUBLIC_GITHUB_STATE }}" >> .env
+          ${{ steps.detect-package-manager.outputs.runner }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

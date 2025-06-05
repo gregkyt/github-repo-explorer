@@ -7,16 +7,11 @@ const nextConfig = {
   basePath: isProd ? `/${repoName}` : "",
   assetPrefix: isProd ? `/${repoName}/` : "",
   env: {
-    BASE_URL: isProd ? process.env.NEXT_PUBLIC_BASE_URL : process.env.BASE_URL,
-    SERVICE_BASE_URL: isProd
-      ? process.env.NEXT_PUBLIC_SERVICE_BASE_URL
-      : process.env.SERVICE_BASE_URL,
-    GITHUB_CLIENT_ID: isProd
-      ? process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID
-      : process.env.GITHUB_CLIENT_ID,
-    GITHUB_CLIENT_SECRET: isProd
-      ? process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET
-      : process.env.GITHUB_CLIENT_SECRET,
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+    NEXT_PUBLIC_SERVICE_BASE_URL: process.env.NEXT_PUBLIC_SERVICE_BASE_URL,
+    NEXT_PUBLIC_GITHUB_CLIENT_ID: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
+    NEXT_PUBLIC_GITHUB_CLIENT_SECRET:
+      process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
   },
   reactStrictMode: false,
 };

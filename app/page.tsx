@@ -7,8 +7,8 @@ import { FaGithub } from "react-icons/fa";
 const GitHub = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const clientId = process.env.GITHUB_CLIENT_ID;
-  const state = process.env.GITHUB_STATE;
+  const clientId = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+  const state = process.env.NEXT_PUBLIC_GITHUB_STATE;
 
   const router = useRouter();
   const searchParams = useSearchParams();

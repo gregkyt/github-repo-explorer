@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   try {
     const code = req.nextUrl.searchParams.get("code");
@@ -13,8 +13,8 @@ export async function GET(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        client_id: process.env.GITHUB_CLIENT_ID,
-        client_secret: process.env.GITHUB_CLIENT_SECRET,
+        client_id: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID,
+        client_secret: process.env.NEXT_PUBLIC_GITHUB_CLIENT_SECRET,
         code,
       }),
     });
